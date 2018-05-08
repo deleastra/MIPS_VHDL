@@ -6,6 +6,7 @@ ENTITY control_unit IS
          reg_write   : OUT STD_LOGIC;
 		   alu_src     : OUT STD_LOGIC;
 			reg_dst     : OUT STD_LOGIC;
+			jump_sel    : OUT STD_LOGIC;
 		   alu_op      : OUT STD_LOGIC_VECTOR(1 DOWNTO 0));
 END ENTITY control_unit;
 
@@ -38,4 +39,9 @@ BEGIN
 				   "10" WHEN "000100", -- and
 	            "11" WHEN "000101", -- or
 				   "00" WHEN OTHERS;
+					
+  WITH instruction SELECT
+    jump_sel <= '1' WHEN "001000", -- j
+	             '0' WHEN OTHERS;
+					  
 END dataflow;

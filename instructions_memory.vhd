@@ -8,9 +8,12 @@ ENTITY instructions_memory IS
 END ENTITY instructions_memory;
 
 ARCHITECTURE dataflow OF instructions_memory IS
+
+    -- "00000100001000010000001111101000", -- 0 -- addi $1, $1, 1000
+	 
     TYPE mem_array IS ARRAY(0 TO 31) OF STD_LOGIC_VECTOR(31 DOWNTO 0);
 	 SIGNAL instruction_mem : mem_array := (
-	 "00000100001000010000001111101000", -- 0 -- addi $1, $1, 1000
+	 "00100010101000010000000000000000", -- 0 -- j $10
 	 "00000100010000100000011111010000", -- addi $2, $2, 2000
 	 "00000000001000100001100000000000", -- add $3, $1, $2
 	 "10000000011000000000000000000000", -- just read $3

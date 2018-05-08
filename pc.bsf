@@ -33,15 +33,15 @@ applicable agreement for further details.
 	(port
 		(pt 0 48)
 		(input)
-		(text "current_instruction[31..0]" (rect 0 0 96 12)(font "Arial" ))
-		(text "current_instruction[31..0]" (rect 21 43 117 55)(font "Arial" ))
+		(text "current_instruction[4..0]" (rect 0 0 94 12)(font "Arial" ))
+		(text "current_instruction[4..0]" (rect 21 43 115 55)(font "Arial" ))
 		(line (pt 0 48)(pt 16 48)(line_width 3))
 	)
 	(port
 		(pt 280 32)
 		(output)
-		(text "next_instruction[31..0]" (rect 0 0 84 12)(font "Arial" ))
-		(text "next_instruction[31..0]" (rect 175 27 259 39)(font "Arial" ))
+		(text "next_instruction[4..0]" (rect 0 0 82 12)(font "Arial" ))
+		(text "next_instruction[4..0]" (rect 177 27 259 39)(font "Arial" ))
 		(line (pt 280 32)(pt 264 32)(line_width 3))
 	)
 	(drawing
