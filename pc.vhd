@@ -13,9 +13,9 @@ ARCHITECTURE behavior OF pc IS
 BEGIN
     PROCESS(clk)
 	 BEGIN
-	     IF (RISING_EDGE(clk)) THEN
-		      next_signal <= STD_LOGIC_VECTOR(UNSIGNED(current_instruction) + TO_UNSIGNED(4, 32));
+	     IF (FALLING_EDGE(clk)) THEN
+		      next_signal <= STD_LOGIC_VECTOR(UNSIGNED(current_instruction) + TO_UNSIGNED(1, 32));
 			END IF;
 	 END PROCESS;
 	 next_instruction <= next_signal;
-END behavior; 
+END behavior;
