@@ -23,7 +23,7 @@ ARCHITECTURE behavior OF registers IS
 
 	-- define memory as array
 	-- 32 x 32 = 1024 bits memory
-	TYPE mem_array IS ARRAY(4 DOWNTO 0) OF STD_LOGIC_VECTOR(31 DOWNTO 0);
+	TYPE mem_array IS ARRAY(0 TO 31) OF STD_LOGIC_VECTOR(31 DOWNTO 0);
 	SIGNAL reg_mem : mem_array;
 
 BEGIN
