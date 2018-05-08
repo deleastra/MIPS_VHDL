@@ -7,7 +7,8 @@ ENTITY control_unit IS
 		   alu_src     : OUT STD_LOGIC;
 			reg_dst     : OUT STD_LOGIC;
 			jump_sel    : OUT STD_LOGIC;
-		   alu_op      : OUT STD_LOGIC_VECTOR(1 DOWNTO 0));
+			branch_ctl  : OUT STD_LOGIC;
+		   alu_op      : OUT STD_LOGIC_VECTOR(2 DOWNTO 0));
 END ENTITY control_unit;
 
 ARCHITECTURE dataflow OF control_unit IS
@@ -19,6 +20,7 @@ BEGIN
 					  '1' WHEN "000011", -- subi
 					  '1' WHEN "000100", -- and
 					  '1' WHEN "000101", -- or
+					  '1' WHEN "001000", -- slt
 					  '0' WHEN OTHERS;
 					  
   WITH instruction SELECT  
@@ -32,16 +34,23 @@ BEGIN
 					'1' WHEN OTHERS;
 			
   WITH instruction SELECT
-	  alu_op <= "00" WHEN "000000", -- add
-	            "00" WHEN "000001", -- addi
-	            "01" WHEN "000010", -- sub
-	            "01" WHEN "000011", -- subi
-				   "10" WHEN "000100", -- and
-	            "11" WHEN "000101", -- or
-				   "00" WHEN OTHERS;
+	  alu_op <= "000" WHEN "000000", -- add
+	            "000" WHEN "000001", -- addi
+	            "001" WHEN "000010", -- sub
+	            "001" WHEN "000011", -- subi
+				   "010" WHEN "000100", -- and
+	            "011" WHEN "000101", -- or
+					"100" WHEN "001000", -- slt 
+					"101" WHEN "001001", -- beq
+					"110" WHEN "001010", -- bne
+				   "000" WHEN OTHERS;
 					
   WITH instruction SELECT
-    jump_sel <= '1' WHEN "001000", -- j
+    jump_sel <= '1' WHEN "010000", -- j
 	             '0' WHEN OTHERS;
-					  
+  
+  WITH instruction SELECT
+     branch_ctl <= '1' WHEN "001001", -- beq
+					    '1' WHEN "001010", -- bne
+				       '0' WHEN OTHERS;
 END dataflow;

@@ -9,12 +9,12 @@ ENTITY pc IS
 END ENTITY pc;
 
 ARCHITECTURE behavior OF pc IS
-    SIGNAL next_signal : STD_LOGIC_VECTOR(4 DOWNTO 0);
+    SIGNAL next_signal : STD_LOGIC_VECTOR(4 DOWNTO 0) := "00000";
 BEGIN
     PROCESS(clk)
 	 BEGIN
 	     IF (FALLING_EDGE(clk)) THEN
-		      next_signal <= STD_LOGIC_VECTOR(UNSIGNED(current_instruction) + TO_UNSIGNED(1, 4));
+		      next_signal <= STD_LOGIC_VECTOR(UNSIGNED(current_instruction) + TO_UNSIGNED(1, 5));
 			END IF;
 	 END PROCESS;
 	 next_instruction <= next_signal;

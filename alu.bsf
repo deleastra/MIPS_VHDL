@@ -40,16 +40,23 @@ applicable agreement for further details.
 	(port
 		(pt 0 64)
 		(input)
-		(text "op[1..0]" (rect 0 0 28 12)(font "Arial" ))
-		(text "op[1..0]" (rect 21 59 49 71)(font "Arial" ))
+		(text "op[2..0]" (rect 0 0 29 12)(font "Arial" ))
+		(text "op[2..0]" (rect 21 59 50 71)(font "Arial" ))
 		(line (pt 0 64)(pt 16 64)(line_width 3))
 	)
 	(port
 		(pt 168 32)
 		(output)
+		(text "zero" (rect 0 0 16 12)(font "Arial" ))
+		(text "zero" (rect 131 27 147 39)(font "Arial" ))
+		(line (pt 168 32)(pt 152 32)(line_width 1))
+	)
+	(port
+		(pt 168 48)
+		(output)
 		(text "res[31..0]" (rect 0 0 36 12)(font "Arial" ))
-		(text "res[31..0]" (rect 111 27 147 39)(font "Arial" ))
-		(line (pt 168 32)(pt 152 32)(line_width 3))
+		(text "res[31..0]" (rect 111 43 147 55)(font "Arial" ))
+		(line (pt 168 48)(pt 152 48)(line_width 3))
 	)
 	(drawing
 		(rectangle (rect 16 16 152 96)(line_width 1))
