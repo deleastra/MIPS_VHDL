@@ -22,9 +22,9 @@ END ENTITY registers;
 ARCHITECTURE behavior OF registers IS
 
 	-- define memory as array
-	-- 8 x 4 = 32 bits memory
-	TYPE reg_array IS ARRAY(4 DOWNTO 0) OF STD_LOGIC_VECTOR(31 DOWNTO 0);
-	SIGNAL reg_mem : reg_array;
+	-- 32 x 32 = 1024 bits memory
+	TYPE mem_array IS ARRAY(4 DOWNTO 0) OF STD_LOGIC_VECTOR(31 DOWNTO 0);
+	SIGNAL reg_mem : mem_array;
 
 BEGIN
 	PROCESS(clk)
