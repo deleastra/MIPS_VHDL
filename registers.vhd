@@ -9,12 +9,12 @@ ENTITY registers IS
 	PORT	(	
 				clk			:	IN		STD_LOGIC;
 				write_en		:	IN		STD_LOGIC;
-				write_reg	:	IN		STD_LOGIC_VECTOR(1 DOWNTO 0);
-				read_reg_1	:	IN		STD_LOGIC_VECTOR(1 DOWNTO 0);
-				read_reg_2	:	IN		STD_LOGIC_VECTOR(1 DOWNTO 0);
-				write_data	:	IN		STD_LOGIC_VECTOR(7 DOWNTO 0);
-				read_data_1	:	OUT	STD_LOGIC_VECTOR(7 DOWNTO 0);
-				read_data_2	:	OUT	STD_LOGIC_VECTOR(7 DOWNTO 0)
+				write_reg	:	IN		STD_LOGIC_VECTOR(4 DOWNTO 0);
+				read_reg_1	:	IN		STD_LOGIC_VECTOR(4 DOWNTO 0);
+				read_reg_2	:	IN		STD_LOGIC_VECTOR(4 DOWNTO 0);
+				write_data	:	IN		STD_LOGIC_VECTOR(31 DOWNTO 0);
+				read_data_1	:	OUT	STD_LOGIC_VECTOR(31 DOWNTO 0);
+				read_data_2	:	OUT	STD_LOGIC_VECTOR(31 DOWNTO 0)
 			);
 			
 END ENTITY registers;
@@ -23,7 +23,7 @@ ARCHITECTURE behavior OF registers IS
 
 	-- define memory as array
 	-- 8 x 4 = 32 bits memory
-	TYPE reg_array IS ARRAY(3 DOWNTO 0) OF STD_LOGIC_VECTOR(7 DOWNTO 0);
+	TYPE reg_array IS ARRAY(4 DOWNTO 0) OF STD_LOGIC_VECTOR(31 DOWNTO 0);
 	SIGNAL reg_mem : reg_array;
 
 BEGIN
@@ -36,11 +36,11 @@ BEGIN
 	
 	-- $zero handle
 	WITH read_reg_1 SELECT
-		read_data_1 <= "00000000" WHEN "00",
+		read_data_1 <= STD_LOGIC_VECTOR(TO_UNSIGNED(0, 32)) WHEN "00000",
 							reg_mem(TO_INTEGER(UNSIGNED(read_reg_1))) WHEN OTHERS;
 	
 	WITH read_reg_2 SELECT
-		read_data_2 <= "00000000" WHEN "00",
+		read_data_2 <= STD_LOGIC_VECTOR(TO_UNSIGNED(0, 32)) WHEN "00000",
 							reg_mem(TO_INTEGER(UNSIGNED(read_reg_2))) WHEN OTHERS;
 
 END behavior;
